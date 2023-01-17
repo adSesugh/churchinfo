@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Redirect;
 class DashboardController extends Controller
 {
     public function welcome(){
-    	if (session()->has('fullname')) {
+    	if (!session()->has('fullname')) {
             $memberCountries = DB::select(DB::raw("SELECT distinct(`name`) FROM `build_countries` order by `name` asc"));
             $memberChurches = DB::select(DB::raw("SELECT distinct(`mem_church`) FROM `build_members` order by `mem_church` asc"));
             $memberRegions = DB::select(DB::raw("SELECT distinct(`reg_name`) FROM `build_regions` order by `reg_name` asc"));
@@ -105,7 +105,7 @@ class DashboardController extends Controller
          return redirect('/'); 	
     }
     public function getDashboard2(){
-    	if (session()->has('fullname')) {
+    	if (!session()->has('fullname')) {
             $memberCountries = DB::select(DB::raw("SELECT distinct(`name`) FROM `build_countries`  order by `name` asc"));
             $memberChurches = DB::select(DB::raw("SELECT distinct(`church_abbreviation`) FROM `build_churches` order by `church_abbreviation` asc"));
             $memberRegions = DB::select(DB::raw("SELECT distinct(`reg_name`) FROM `build_regions` order by `reg_name` asc"));
@@ -235,7 +235,7 @@ class DashboardController extends Controller
          return redirect('/'); 	
     }
     public function getZGACTDashboard(){
-    	if (session()->has('fullname')) {
+    	if (!session()->has('fullname')) {
             $memberCountries = DB::select(DB::raw("SELECT distinct(`name`) FROM `build_countries` order by `name` asc"));
             $memberChurches = DB::select(DB::raw("SELECT distinct(`mem_church`) FROM `build_members` order by `mem_church` asc"));
             $memberRegions = DB::select(DB::raw("SELECT distinct(`reg_name`) FROM `build_regions` order by `reg_name` asc"));

@@ -89,7 +89,7 @@ class DashboardController extends Controller
          return redirect('/'); 	
     }
     public function getDashboard(){
-    	if (session()->has('fullname')) {
+    	if (!session()->has('fullname')) {
           
             
             $countMembers = BuildMembers::where('registered_at','LIKE','2018%')->count();

@@ -1,5 +1,6 @@
 <?php
 
+use App\TIFUsers;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        TIFUsers::factory(1)->create();
         // $this->call(UsersTableSeeder::class);
     }
 }

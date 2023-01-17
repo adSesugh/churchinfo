@@ -28,7 +28,7 @@ class LoginController extends Controller
                         Session::put('fullname', $dbname);
                         Session::put('username', $loggedusername);
                         Session::put('userDesignation', $userDesignation);
-                         Session::put('level', $userlevel);
+                        Session::put('level', $userlevel);
                        return response()->json(['redirect'=> 'dashboard']);
                     }else if($role=='Registrar'){
                         Session::put('fullname', $dbname);

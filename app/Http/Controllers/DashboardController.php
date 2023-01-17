@@ -16,8 +16,78 @@ use Illuminate\Support\Facades\Redirect;
 class DashboardController extends Controller
 {
     public function welcome(){
-    	if (!session()->has('fullname')) {
-            $memberCountries = DB::select(DB::raw("SELECT distinct(`name`) FROM `build_countries` order by `name` asc"));
+    	//if (!session()->has('fullname')) {
+        //     $memberCountries = DB::select(DB::raw("SELECT distinct(`name`) FROM `build_countries` order by `name` asc"));
+        //     $memberChurches = DB::select(DB::raw("SELECT distinct(`mem_church`) FROM `build_members` order by `mem_church` asc"));
+        //     $memberRegions = DB::select(DB::raw("SELECT distinct(`reg_name`) FROM `build_regions` order by `reg_name` asc"));
+        //     $activeEvent = DB::select(DB::raw("SELECT distinct(`eventname`) FROM `cims_events`where `status`='active' LIMIT 1 "));
+            
+        //     $countMembers = BuildMembers::where('registered_at','LIKE','2017%')
+        //     ->where('mem_conference','=','BUILD Conference 2017')->count();
+
+        //     $countCountries = DB::table('build_members')
+        //     ->where('registered_at','LIKE','2017%')
+        //     ->where('mem_conference','=','BUILD Conference 2017')->distinct()->get(['mem_country'])->count();
+        //     // ->count(DB::raw('DISTINCT mem_country'));
+
+        //     $countChurches = DB::table('build_members')
+        //     ->where('mem_conference','=','BUILD Conference 2017')->distinct()->get(['mem_church'])->count();
+        //   //  $countgender = DB::table('build_members')->distinct()->get(['mem_gender'])->count();
+        //     $countMales = BuildMembers::where('mem_gender','=','M')
+        //     ->where('mem_conference','=','BUILD Conference 2017')->count();
+
+        //     $countFemales = BuildMembers::where('mem_gender','=','F')
+        //     ->where('mem_conference','=','BUILD Conference 2017')->count();
+
+        //     $countMalesTz = BuildMembers::where('mem_gender','=','M')
+        //                     ->where('mem_country','=','TANZANIA')
+        //                     ->where('mem_conference','=','BUILD Conference 2017')->count();
+
+        //     $countFemalesTz = BuildMembers::where('mem_gender','=','F')
+        //                     ->where('mem_country','=','TANZANIA')
+        //                     ->where('mem_conference','=','BUILD Conference 2017')->count();
+
+        //     $countMalesKn = BuildMembers::where('mem_gender','=','M')
+        //                     ->where('mem_country','=','KENYA')
+        //                     ->where('mem_conference','=','BUILD Conference 2017')->count();
+
+        //     $countFemalesKn = BuildMembers::where('mem_gender','=','F')
+        //                     ->where('mem_country','=','KENYA')
+        //                     ->where('mem_conference','=','BUILD Conference 2017')->count();   
+                            
+        //     $countMalesUg = BuildMembers::where('mem_gender','=','M')
+        //                     ->where('mem_country','=','UGANDA')
+        //                     ->where('mem_conference','=','BUILD Conference 2017')->count();
+
+        //     $countFemalesUg = BuildMembers::where('mem_gender','=','F')
+        //                     ->where('mem_country','=','UGANDA')
+        //                     ->where('mem_conference','=','BUILD Conference 2017')->count();   
+
+        //     $countMalesBn = BuildMembers::where('mem_gender','=','M')
+        //                     ->where('mem_country','=','BURUNDI')
+        //                     ->where('mem_conference','=','BUILD Conference 2017')->count();
+
+        //     $countFemalesBn = BuildMembers::where('mem_gender','=','F')
+        //                     ->where('mem_country','=','BURUNDI')
+        //                     ->where('mem_conference','=','BUILD Conference 2017')->count();   
+
+        //     $countMalesRn = BuildMembers::where('mem_gender','=','M')
+        //                     ->where('mem_country','=','RWANDA')
+        //                     ->where('mem_conference','=','BUILD Conference 2017')->count();
+
+        //     $countFemalesRn = BuildMembers::where('created_at','LIKE','F')
+        //                     ->where('mem_country','=','RWANDA')
+        //                     ->where('mem_conference','=','BUILD Conference 2017')->count();   
+        //     // foreach($memberCountries as $memberCountry){
+        //     //     $countryFemales = BuildMembers::where('mem_gender','=','F')
+        //     //     ->where('mem_country','=',$memberCountry['mem_country'])->count();
+        //     // }
+        
+        //     $allmembers = DB::select(DB::raw("SELECT * FROM `build_members` where mem_conference='Build Conference 2017'"));
+        //      return view('dashboard',compact('allmembers','countMalesKn','countMalesBn','countMalesRn','countMalesUg','countMalesTz','countFemalesKn','countFemalesBn','countFemalesRn','countFemalesUg','countFemalesTz','countMalesTz','countMembers','countCountries','countMales','countFemales','countChurches','memberCountries','memberChurches','memberRegions','activeEvent'));
+        // }
+         //return redirect('/');
+         $memberCountries = DB::select(DB::raw("SELECT distinct(`name`) FROM `build_countries` order by `name` asc"));
             $memberChurches = DB::select(DB::raw("SELECT distinct(`mem_church`) FROM `build_members` order by `mem_church` asc"));
             $memberRegions = DB::select(DB::raw("SELECT distinct(`reg_name`) FROM `build_regions` order by `reg_name` asc"));
             $activeEvent = DB::select(DB::raw("SELECT distinct(`eventname`) FROM `cims_events`where `status`='active' LIMIT 1 "));
@@ -84,9 +154,7 @@ class DashboardController extends Controller
             // }
         
             $allmembers = DB::select(DB::raw("SELECT * FROM `build_members` where mem_conference='Build Conference 2017'"));
-             return view('dashboard',compact('allmembers','countMalesKn','countMalesBn','countMalesRn','countMalesUg','countMalesTz','countFemalesKn','countFemalesBn','countFemalesRn','countFemalesUg','countFemalesTz','countMalesTz','countMembers','countCountries','countMales','countFemales','countChurches','memberCountries','memberChurches','memberRegions','activeEvent'));
-        }
-         return redirect('/'); 	
+             return view('dashboard',compact('allmembers','countMalesKn','countMalesBn','countMalesRn','countMalesUg','countMalesTz','countFemalesKn','countFemalesBn','countFemalesRn','countFemalesUg','countFemalesTz','countMalesTz','countMembers','countCountries','countMales','countFemales','countChurches','memberCountries','memberChurches','memberRegions','activeEvent')); 	
     }
     public function getDashboard(){
     	if (!session()->has('fullname')) {
@@ -105,7 +173,134 @@ class DashboardController extends Controller
          return redirect('/'); 	
     }
     public function getDashboard2(){
-    	if (!session()->has('fullname')) {
+    	// if (!session()->has('fullname')) {
+        //     $memberCountries = DB::select(DB::raw("SELECT distinct(`name`) FROM `build_countries`  order by `name` asc"));
+        //     $memberChurches = DB::select(DB::raw("SELECT distinct(`church_abbreviation`) FROM `build_churches` order by `church_abbreviation` asc"));
+        //     $memberRegions = DB::select(DB::raw("SELECT distinct(`reg_name`) FROM `build_regions` order by `reg_name` asc"));
+        //     $memberRoles = DB::select(DB::raw("SELECT distinct(`mem_rolename`) FROM `build_churchroles` order by `mem_rolename` asc"));
+        //     $activeEvent = DB::select(DB::raw("SELECT distinct(`eventname`) FROM `cims_events`where `status`='active' LIMIT 1 "));
+        //     $countMembers = BuildMembers::where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')->count();
+        //     $pwd=Hash::make('melody2018');
+        //     $countCountries = DB::table('build_members')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->distinct()->get(['mem_country'])->count();
+
+        //     $countChurches = DB::table('build_members')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->distinct()->get(['mem_church'])->count();
+        //   //  $countgender = DB::table('build_members')->distinct()->get(['mem_gender'])->count();
+        //     $countMales = BuildMembers::where('mem_gender','=','Male')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->count();
+
+        //     $countFemales = BuildMembers::where('mem_gender','=','Female')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->count();
+
+        //     $countMalesTz = BuildMembers::where('mem_gender','=','Male')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_country','=','TANZANIA')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->count();
+
+        //     $countFemalesTz = BuildMembers::where('mem_gender','=','Female')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','TANZANIA')->count();
+
+        //     $countMalesKn = BuildMembers::where('mem_gender','=','Male')
+        //                     ->where('mem_country','=','KENYA')
+        //                     ->where('mem_conference','=','BUILD Conference 2018')
+        //                     ->where('registered_at','LIKE','2018%')
+        //                     ->count();
+
+        //     $countFemalesKn = BuildMembers::where('mem_gender','=','Female')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','KENYA')->count();   
+                            
+        //     $countMalesUg = BuildMembers::where('mem_gender','=','Male')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','UGANDA')->count();
+
+        //     $countFemalesUg = BuildMembers::where('mem_gender','=','Female')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','UGANDA')->count();   
+
+        //     $countMalesBn = BuildMembers::where('mem_gender','=','Male')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','BURUNDI')->count();
+
+        //     $countFemalesBn = BuildMembers::where('mem_gender','=','Female')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //      ->where('mem_country','=','BURUNDI')->count();   
+
+        //     $countMalesRn = BuildMembers::where('mem_gender','=','Male')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','RWANDA')->count();
+
+        //     $countFemalesRn = BuildMembers::where('mem_gender','=','Female')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','RWANDA')->count(); 
+            
+        //     $countFemalesCn = BuildMembers::where('mem_gender','=','Female')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','Congo')->count();
+
+        //     $countFemalesMs = BuildMembers::where('mem_gender','=','Female')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','Mauritius')->count();
+
+        //     $countFemalesZim = BuildMembers::where('mem_gender','=','Female')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','Zimbabwe')->count();
+
+        //     $countFemalesEthio = BuildMembers::where('mem_gender','=','Female')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','Ethiopia')->count();
+
+        //     $countMalesZim = BuildMembers::where('mem_gender','=','Male')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','Zimbabwe')->count();
+
+        //     $countMalesEthio = BuildMembers::where('mem_gender','=','Male')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','Ethiopia')->count();
+
+
+        //     $countMalesCn = BuildMembers::where('mem_gender','=','Male')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','Congo')->count();
+
+        //     $countMalesMs = BuildMembers::where('mem_gender','=','Male')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','BUILD Conference 2018')
+        //     ->where('mem_country','=','Mauritius')->count();
+        //     //  response()->json(array('success' => true, 'html'=>$returnHTML));
+        //        $allmembers = DB::select(DB::raw("SELECT * FROM `build_members` where registered_at like '%2018%' AND mem_conference =  'BUILD Conference 2018'"));
+        //     return view('dashboard2',compact('countMalesEthio','countFemalesEthio','countMalesZim','countFemalesZim','pwd','countMalesMs','countFemalesMs','countMalesCn','countFemalesCn','allmembers','memberRoles','countMalesKn','countMalesBn','countMalesRn','countMalesUg','countMalesTz','countFemalesKn','countFemalesBn','countFemalesRn','countFemalesUg','countFemalesTz','countMalesTz','countMembers','countCountries','countMales','countFemales','countChurches','memberCountries','memberChurches','memberRegions','activeEvent'));
+
+        //     //  response()->json(array('success' => true, 'html'=>$returnHTML));
+        // }
+        //  return redirect('/'); 
             $memberCountries = DB::select(DB::raw("SELECT distinct(`name`) FROM `build_countries`  order by `name` asc"));
             $memberChurches = DB::select(DB::raw("SELECT distinct(`church_abbreviation`) FROM `build_churches` order by `church_abbreviation` asc"));
             $memberRegions = DB::select(DB::raw("SELECT distinct(`reg_name`) FROM `build_regions` order by `reg_name` asc"));
@@ -228,11 +423,7 @@ class DashboardController extends Controller
             ->where('mem_country','=','Mauritius')->count();
             //  response()->json(array('success' => true, 'html'=>$returnHTML));
                $allmembers = DB::select(DB::raw("SELECT * FROM `build_members` where registered_at like '%2018%' AND mem_conference =  'BUILD Conference 2018'"));
-            return view('dashboard2',compact('countMalesEthio','countFemalesEthio','countMalesZim','countFemalesZim','pwd','countMalesMs','countFemalesMs','countMalesCn','countFemalesCn','allmembers','memberRoles','countMalesKn','countMalesBn','countMalesRn','countMalesUg','countMalesTz','countFemalesKn','countFemalesBn','countFemalesRn','countFemalesUg','countFemalesTz','countMalesTz','countMembers','countCountries','countMales','countFemales','countChurches','memberCountries','memberChurches','memberRegions','activeEvent'));
-
-            //  response()->json(array('success' => true, 'html'=>$returnHTML));
-        }
-         return redirect('/'); 	
+            return view('dashboard2',compact('countMalesEthio','countFemalesEthio','countMalesZim','countFemalesZim','pwd','countMalesMs','countFemalesMs','countMalesCn','countFemalesCn','allmembers','memberRoles','countMalesKn','countMalesBn','countMalesRn','countMalesUg','countMalesTz','countFemalesKn','countFemalesBn','countFemalesRn','countFemalesUg','countFemalesTz','countMalesTz','countMembers','countCountries','countMales','countFemales','countChurches','memberCountries','memberChurches','memberRegions','activeEvent'));	
     }
     public function getZGACTDashboard(){
     	if (!session()->has('fullname')) {

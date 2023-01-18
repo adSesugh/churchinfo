@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 class AccountantController extends Controller
 {
     public function welcome(){
-    	if (!session()->has('fullname')) {
-             return view('accountants_dashboard');
-        }
-         return redirect('/'); 	
+    	// if (!session()->has('fullname')) {
+        //      return view('accountants_dashboard');
+        // }
+        //  return redirect('/'); 	
+        return view('accountants_dashboard');
     }
 }

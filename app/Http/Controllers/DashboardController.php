@@ -426,8 +426,93 @@ class DashboardController extends Controller
             return view('dashboard2',compact('countMalesEthio','countFemalesEthio','countMalesZim','countFemalesZim','pwd','countMalesMs','countFemalesMs','countMalesCn','countFemalesCn','allmembers','memberRoles','countMalesKn','countMalesBn','countMalesRn','countMalesUg','countMalesTz','countFemalesKn','countFemalesBn','countFemalesRn','countFemalesUg','countFemalesTz','countMalesTz','countMembers','countCountries','countMales','countFemales','countChurches','memberCountries','memberChurches','memberRegions','activeEvent'));	
     }
     public function getZGACTDashboard(){
-    	if (!session()->has('fullname')) {
-            $memberCountries = DB::select(DB::raw("SELECT distinct(`name`) FROM `build_countries` order by `name` asc"));
+    	// if (!session()->has('fullname')) {
+        //     $memberCountries = DB::select(DB::raw("SELECT distinct(`name`) FROM `build_countries` order by `name` asc"));
+        //     $memberChurches = DB::select(DB::raw("SELECT distinct(`mem_church`) FROM `build_members` order by `mem_church` asc"));
+        //     $memberRegions = DB::select(DB::raw("SELECT distinct(`reg_name`) FROM `build_regions` order by `reg_name` asc"));
+        //     $activeEvent = DB::select(DB::raw("SELECT distinct(`eventname`) FROM `cims_events`where `status`='active' LIMIT 1 "));
+        //     $countMembers = BuildMembers::where('registered_at','LIKE','2018%')
+        //                                 ->where('mem_conference','=','ZGACT Youth Camp')->count();
+
+        //     $countCountries = DB::table('build_members')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->distinct()->get(['mem_country'])->count();
+
+        //     $countChurches = DB::table('build_members')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->distinct()->get(['mem_church'])->count();
+        //   //  $countgender = DB::table('build_members')->distinct()->get(['mem_gender'])->count();
+        //     $countMales = BuildMembers::where('mem_gender','=','M')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->count();
+
+        //     $countFemales = BuildMembers::where('mem_gender','=','F')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->count();
+
+        //     $countMalesTz = BuildMembers::where('mem_gender','=','M')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->where('mem_country','=','TANZANIA')
+        //     ->count();
+
+        //     $countFemalesTz = BuildMembers::where('mem_gender','=','F')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->where('mem_country','=','TANZANIA')->count();
+
+        //     $countMalesKn = BuildMembers::where('mem_gender','=','M')
+        //                     ->where('mem_region','=','Dar es Salaam')
+        //                     ->where('mem_conference','=','ZGACT Youth Camp')
+        //                     ->where('registered_at','LIKE','2018%')
+        //                     ->count();
+
+        //     $countFemalesKn = BuildMembers::where('mem_gender','=','F')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->where('mem_region','=','Dar es Salaam')->count();   
+                            
+        //     $countMalesUg = BuildMembers::where('mem_gender','=','M')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->where('mem_region','=','Mwanza')->count();
+
+        //     $countFemalesUg = BuildMembers::where('mem_gender','=','F')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->where('mem_region','=','Mwanza')->count();   
+
+        //     $countMalesBn = BuildMembers::where('mem_gender','=','M')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->where('mem_region','=','Morogoro')->count();
+
+        //     $countFemalesBn = BuildMembers::where('mem_gender','=','F')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->where('mem_region','=','Morogoro')->count();   
+
+        //     $countMalesRn = BuildMembers::where('mem_gender','=','M')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->where('mem_region','=','Kilimanjaro')->count();
+
+        //     $countFemalesRn = BuildMembers::where('mem_gender','LIKE','F')
+        //     ->where('registered_at','LIKE','2018%')
+        //     ->where('mem_conference','=','ZGACT Youth Camp')
+        //     ->where('mem_region','=','Kilimanjaro')->count();   
+        //     //  response()->json(array('success' => true, 'html'=>$returnHTML));
+        //        $allmembers = DB::select(DB::raw("SELECT * FROM `build_members` where `registered_at` like '%2018%' and `mem_conference`= 'ZGACT Youth Camp'"));
+        //     return view('dashboardzgact',compact('allmembers','countMalesKn','countMalesBn','countMalesRn','countMalesUg','countMalesTz','countFemalesKn','countFemalesBn','countFemalesRn','countFemalesUg','countFemalesTz','countMalesTz','countMembers','countCountries','countMales','countFemales','countChurches','memberCountries','memberChurches','memberRegions','activeEvent'));
+
+        //     //  response()->json(array('success' => true, 'html'=>$returnHTML));
+        // }
+        //  return redirect('/'); 	
+        $memberCountries = DB::select(DB::raw("SELECT distinct(`name`) FROM `build_countries` order by `name` asc"));
             $memberChurches = DB::select(DB::raw("SELECT distinct(`mem_church`) FROM `build_members` order by `mem_church` asc"));
             $memberRegions = DB::select(DB::raw("SELECT distinct(`reg_name`) FROM `build_regions` order by `reg_name` asc"));
             $activeEvent = DB::select(DB::raw("SELECT distinct(`eventname`) FROM `cims_events`where `status`='active' LIMIT 1 "));
@@ -509,9 +594,6 @@ class DashboardController extends Controller
                $allmembers = DB::select(DB::raw("SELECT * FROM `build_members` where `registered_at` like '%2018%' and `mem_conference`= 'ZGACT Youth Camp'"));
             return view('dashboardzgact',compact('allmembers','countMalesKn','countMalesBn','countMalesRn','countMalesUg','countMalesTz','countFemalesKn','countFemalesBn','countFemalesRn','countFemalesUg','countFemalesTz','countMalesTz','countMembers','countCountries','countMales','countFemales','countChurches','memberCountries','memberChurches','memberRegions','activeEvent'));
 
-            //  response()->json(array('success' => true, 'html'=>$returnHTML));
-        }
-         return redirect('/'); 	
     }
     public function user(){
     	if (session()->has('fullname')) {
